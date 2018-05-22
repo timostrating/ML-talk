@@ -43,13 +43,14 @@ $(document).ready ->
   
   body {
     background-color: #{_colors.background}; color: #{_colors.text};
+    overflow: hidden;
     font-size: 13px; line-height: 1.4;
     margin: 0;
     width: 48%;
   }
 
   #my-code {
-    transition: left 500ms, width 500ms, opacity 500ms;
+    transition: all 1s, width 1s, opacity 1s;
     background-color: #{_colors.offblack}; color: #{_colors.text};
     border: 1px solid rgba(0,0,0,0.2);
     padding: 24px 12px;
@@ -70,6 +71,9 @@ $(document).ready ->
   .var           { color: #{_colors.var}; }
   .operator      { color: #{_colors.operator}; }
   .string        { color: #{_colors.string}; }
+
+  center { margin: 50px; }
+
   ~\`
 
   /* 
@@ -78,20 +82,50 @@ $(document).ready ->
   var site = document.createElement("center");
   #{_body_selection}.appendChild(site); ~  
   
-
   var title = document.createElement("h1");
   title.innerHTML = "Timo Strating - 1E";
-  site.appendChild(title); ~ 
+  site.appendChild(title); ~  
 
   var text = document.createElement("h3");
   text.innerHTML = 'TL   <span style="margin:0 20px">➡️</span>   MBO   <span style="margin:0 20px">➡️</span>   HBO';
   site.appendChild(text); ~ 
  
-  var text = document.createElement("div");
-  text.innerHTML = '<div class="container"><div class="row"> <div class="col-6"> een </div> <div class="col-6"> twee </div> </div> </div>';
+  var text = document.createElement("p");
+  text.innerHTML = '<a href="gewoon.de" style="color:  wheat;">gewoon.de</a>';
   site.appendChild(text); ~ 
   
+  var text = document.createElement("p");
+  text.innerHTML = '<a href="#" style="color:  wheat;">zernimap</a>';
+  site.appendChild(text); ~ 
+
   \`
+
+  #my-code {
+    top: 50%;
+    right: 0%;
+    width: 100%;
+  }
+
+  .projects {
+    position: absolute;
+    top: 0;
+    width:  100%;
+    height: 100%;
+  }
+
+  .project {
+    background-color: rgb(255, 158, 37);
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    text-align: center;
+    margin: -5px;
+  }
+
+
+  #my-code {
+    width: 50%;
+  }
 
   """
   ]
@@ -258,14 +292,18 @@ $(document).ready ->
     else
       char = if which == "~" then "" else which      
       $style_elem.innerHTML += char
-      code_html = styleSyntax($code_pre.innerHTML, char)
-        
+      code_html = styleSyntax($code_pre.innerHTML, char)        
 
     # set states    
     prevAsterisk = (which == "*")
     prevSlash = (which == "/") && !openComment
     openInteger = if which.match(/[0-9]/) || (openInteger && which.match(/[\.\%pxems]/)) then true else false
     if which == '"' then openString = !openString
+
+    # you should not see these charecters
+    # if which == "!" || which == "~" 
+    #   which = ""
+      # code_html = $code_pre.innerHTML
 
     # add text to code block variable for regex matching.
     _code_block += which
@@ -307,5 +345,5 @@ $(document).ready ->
 
 
   jQuery ->
-    $(document).keyup ->
+    $(document).mouseup ->
       _PAUSED = false
