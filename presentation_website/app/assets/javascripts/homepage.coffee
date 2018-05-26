@@ -1,5 +1,4 @@
 $(document).ready ->
-  _gutter = 20
   _writing_rate = 0.1
   _throttle = {
     start: 4821
@@ -87,7 +86,7 @@ $(document).ready ->
   site.appendChild(title); ~  
 
   var text = document.createElement("h3");
-  text.innerHTML = 'TL   <span style="margin:0 20px">➡️</span>   MBO   <span style="margin:0 20px">➡️</span>   HBO';
+  text.innerHTML = 'TL <span style="margin:0 20px">➡️</span> MBO <span style="margin:0 20px">➡️</span> HBO';
   site.appendChild(text); ~ 
  
   var text = document.createElement("p");
@@ -129,6 +128,9 @@ $(document).ready ->
 
   """
   ]
+
+# https://www.desmos.com/calculator/gfpglu3o5o
+
 
   # body selector
   $body = document.getElementsByTagName("body")[0]
