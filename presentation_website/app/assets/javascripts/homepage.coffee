@@ -1,5 +1,5 @@
 $(document).ready ->
-  _writing_rate = 0.1
+  _writing_rate = 1
   _throttle = {
     start: 4821
     stop: 5344
@@ -112,8 +112,7 @@ $(document).ready ->
     height: 100%;
   }
 
-  .project {
-    background-color: rgb(255, 158, 37);
+  .p {
     width: 50%;
     height: 50%;
     position: absolute;
@@ -121,10 +120,55 @@ $(document).ready ->
     margin: -5px;
   }
 
+  .p > * {
+    width: 100%;
+    height:100%;
+  }
+
+  .p1 { left:0;  top:0; }
+  .p2 { right:0; top:0; }
+  .p3 { left:0;  bottom:0; }
+  .p4 { right:0; bottom:0; }
+
+  ~\`
+
+  var projects = document.createElement("div");
+  projects.classList.add("projects");
+  #{_body_selection}.appendChild(projects);
+
+  var p1 = document.createElement("div");
+  p1.className = "p p1";
+  p1.innerHTML = '<img src="https://raw.githubusercontent.com/timostrating/noframework/master/example.gif" alt="gif">';
+  projects.appendChild(p1); ~  
+
+  var p2 = document.createElement("div");
+  p2.className = "p p2";
+  p2.innerHTML = '<img src="https://camo.githubusercontent.com/1b5fd2091d78787b8ad8e316642f06dc363dccda/68747470733a2f2f692e696d6775722e636f6d2f72496a4b4375372e676966" alt="gif" data-canonical-src="https://i.imgur.com/rIjKCu7.gif">';
+  projects.appendChild(p2); ~ 
+
+  \`
+  
+  /****************************
+   *                          *
+   * __much_FANCY_such_WOW__  *
+   *                          *
+   ****************************/!
+
+  ~\`
+  \`
 
   #my-code {
     width: 50%;
   }
+
+  ~\`
+
+  var p3 = document.createElement("div");
+  p3.className = "p p3";
+  p3.innerHTML = '<img src="https://thumbs.dreamstime.com/b/server-question-mark-illustration-27432909.jpg">';
+  projects.appendChild(p3); ~ 
+
+  \`
 
   """
   ]
@@ -317,7 +361,7 @@ $(document).ready ->
   writeChars = (message, index, interval) ->
     if index < message.length
       if index >= _throttle.start && index < _throttle.stop
-        interval = 2
+        interval = 1
       else
         interval = _writing_rate
       $code_pre.scrollTop = $code_pre.scrollHeight 
