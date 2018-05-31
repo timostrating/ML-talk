@@ -7,5 +7,5 @@ This repo contains all files that I will be using for a talk that I will be givi
 - This is one of the things that I showed in the slides: https://github.com/timostrating/css_simple_to_complex
 - This is the best overview of all the programming languages that I have used: https://github.com/timostrating/ProjectEuler
 
-### TODO 
-- [ ] put the slides online
+### DESMOS 
+https://www.desmos.com/calculator/uir1f8ntco
